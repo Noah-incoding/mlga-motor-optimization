@@ -12,40 +12,34 @@ The result is a **ML-assisted Genetic Algorithm (MLGA)** framework that signific
 
 # MLGA System Architecture
 
-       Design Variables
+# MLGA System Architecture
 
-(bs0, hs2, steeth, hr2, rteeth, turn)
-│
-▼
-GA Population (3000)
-│
-▼
-Surrogate Model Prediction
-│
-┌───────────┴───────────┐
-│ │
-▼ ▼
-Exploit Candidates Explore Candidates
-(Best predicted) (Highest uncertainty)
-│ │
-└───────────┬───────────┘
-▼
-Physics Evaluation
-(Equivalent Circuit)
-│
-▼
-Fitness Update
-│
-▼
-Database Storage
-│
-▼
-Next GA Generation
+```mermaid
+flowchart TD
 
+A[Design Variables<br/>bs0 hs2 steeth hr2 rteeth turn]
+
+A --> B[GA Population<br/>3000 individuals]
+
+B --> C[Surrogate Model Prediction]
+
+C --> D[Exploit Candidates<br/>Best predicted fitness]
+
+C --> E[Explore Candidates<br/>Highest uncertainty]
+
+D --> F[Physics Evaluation<br/>Equivalent Circuit]
+
+E --> F
+
+F --> G[Fitness Update]
+
+G --> H[Database Storage]
+
+H --> B
+```
 
 The surrogate model predicts the fitness of most individuals.  
-Only a **small subset of candidates** are evaluated using the physics model.
-
+Only a small subset of candidates are evaluated using the physics model.
 ---
 
 # Key Results
