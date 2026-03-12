@@ -193,7 +193,7 @@ This further reduces redundant evaluations.
 
 # Repository Structure
 
-
+```
 mlga-motor-optimization/
 │
 ├── README.md
@@ -213,7 +213,7 @@ mlga-motor-optimization/
 │
 └── results/
 └── figures/
-
+```
 
 ### data
 Dataset used to train the surrogate model.
