@@ -227,25 +227,28 @@ Generated plots and experiment outputs.
 
 ---
 
-# Article Series
+## Article Series
 
 This repository accompanies a technical article series documenting the development of the MLGA framework.
 
-**EP1 – Original GA Optimization System**  
+The articles provide a more detailed explanation of the design decisions, experiments, and analysis behind this project.
+
+The full series is written in **Chinese** and published on **Notion**.
+
+EP1 – Original GA Optimization System  
 Background and baseline GA architecture.
 
-**EP2 – Surrogate Model Training**  
+EP2 – Surrogate Model Training  
 Dataset generation and machine learning model training.
 
-**EP3 – ML Gate Experiment**  
+EP3 – ML Gate Experiment  
 Early attempts to use ML as a filtering gate.
 
-**EP4 – ML-Assisted Genetic Algorithm**  
+EP4 – ML-Assisted Genetic Algorithm  
 Final MLGA architecture and experimental results.
 
-**EP5 – Analysis and Future Work**  
+EP5 – Analysis and Future Work  
 Discussion of results and possible extensions.
-
 ---
 
 # Potential Future Work
