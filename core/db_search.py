@@ -112,7 +112,7 @@ class ExactMatchDB:
     # =====================================================
 
     def _validate_dataframe(self, df: pd.DataFrame) -> pd.DataFrame:
-        # 先去掉重複欄名，只保留第一個
+        # Remove duplicated column names and keep only the first occurrence
         if df.columns.duplicated().any():
             df = df.loc[:, ~df.columns.duplicated()].copy()
 
@@ -120,7 +120,7 @@ class ExactMatchDB:
         if missing:
             raise ValueError(f"Missing key columns: {missing}")
 
-        # 確保每個 key col 都是單一 Series，不是 DataFrame
+        # Ensure each key column is a single Series rather than a DataFrame
         for col in self.key_cols:
             col_obj = df[col]
             if isinstance(col_obj, pd.DataFrame):
@@ -147,7 +147,7 @@ class ExactMatchDB:
         """
         df = self._validate_dataframe(df.copy())
 
-        # 關鍵修正：空 dataframe 直接回傳空 Series
+        # Critical fix: if the dataframe is empty, return an empty Series directly
         if len(df) == 0:
             return pd.Series(index=df.index, dtype="object", name=self.key_col_name)
 
