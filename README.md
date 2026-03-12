@@ -249,6 +249,7 @@ Final MLGA architecture and experimental results.
 
 EP5 – Analysis and Future Work  
 Discussion of results and possible extensions.
+
 ---
 
 # Potential Future Work
