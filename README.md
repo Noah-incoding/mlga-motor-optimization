@@ -12,8 +12,6 @@ The result is a **ML-assisted Genetic Algorithm (MLGA)** framework that signific
 
 # MLGA System Architecture
 
-# MLGA System Architecture
-
 ```mermaid
 flowchart TD
 
