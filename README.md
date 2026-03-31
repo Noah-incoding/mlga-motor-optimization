@@ -44,8 +44,8 @@ Only a small subset of candidates are evaluated using the physics model.
 
 | Method | Runtime (sec) | Physics Evaluations | Best Fitness |
 |------|------|------|------|
-| Pure GA | 3445 | 300,000 | -3.128 |
-| MLGA | 716 | 30,000 | -3.094 |
+| Pure GA | 1780 | 200,000 | -3.233 |
+| MLGA | 758 | 60,000 | -3.317 |
 
 Performance Summary:
 
