@@ -83,6 +83,7 @@ Example:
 
 
 Population = 500
+
 Generations = 400
 
 Total evaluations = 200,000
