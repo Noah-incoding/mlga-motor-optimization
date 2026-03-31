@@ -51,7 +51,7 @@ Performance Summary:
 
 - **~2.35× faster optimization**
 - **~70% reduction in physics evaluations**
-- **Comparable (or slightly improved) final solution quality  **
+- **Comparable (or slightly improved) final solution quality**
 
 These results demonstrate that surrogate-assisted optimization can significantly improve efficiency in engineering design tasks.
 
