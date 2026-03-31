@@ -82,10 +82,10 @@ When the population size and number of generations grow, the number of required 
 Example:
 
 
-Population = 3000
-Generations = 100
+Population = 500
+Generations = 400
 
-Total evaluations = 300,000
+Total evaluations = 200,000
 
 
 Although equivalent circuit models are relatively fast, more complex engineering problems often require **finite element analysis (FEA)** or other expensive simulations.
@@ -123,19 +123,19 @@ This approach preserves the exploration capability of GA while reducing the numb
 Population size:
 
 
-3000
+500
 
 
 Generations:
 
 
-100
+400
 
 
 Total physics evaluations:
 
 
-300,000
+200,000
 
 
 ---
@@ -145,14 +145,14 @@ Total physics evaluations:
 Per generation physics evaluations:
 
 
-150 exploit candidates
-150 explore candidates
+100 exploit candidates
+50 explore candidates
 
 
 Total physics evaluations:
 
 
-300 × 100 = 30,000
+150 × 400 = 60,000
 
 
 The remaining candidates use surrogate predictions instead of physics calculations.
@@ -182,7 +182,7 @@ The system maintains a design database to avoid recomputing identical candidate 
 Total database hits:
 
 
-2827
+~6,000 (varies depending on random seed and DB state)
 
 
 This further reduces redundant evaluations.
