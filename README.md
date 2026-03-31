@@ -17,7 +17,7 @@ flowchart TD
 
 A[Design Variables<br/>bs0 hs2 steeth hr2 rteeth turn]
 
-A --> B[GA Population<br/>3000 individuals]
+A --> B[GA Population<br/>500 individuals]
 
 B --> C[Surrogate Model Prediction]
 
