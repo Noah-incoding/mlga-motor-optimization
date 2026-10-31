@@ -42,18 +42,20 @@ Only a small subset of candidates are evaluated using the physics model.
 
 # Key Results
 
+The reported comparison between Pure GA and MLGA is summarized below.
+
 | Method | Runtime (sec) | Physics Evaluations | Best Fitness |
-|------|------|------|------|
+|--------|--------------:|--------------------:|-------------:|
 | Pure GA | 1780 | 200,000 | -3.233 |
 | MLGA | 758 | 60,000 | -3.317 |
 
 Performance Summary:
 
-- **~2.35× faster optimization**
-- **~70% reduction in physics evaluations**
-- **Comparable (or slightly improved) final solution quality**
+- **~2.35× speedup**, calculated as 1780 / 758.
+- **70% fewer physics evaluations**, calculated as (200,000 − 60,000) / 200,000.
+- **Reported best fitness:** -3.233 for Pure GA and -3.317 for MLGA.
 
-These results demonstrate that surrogate-assisted optimization can significantly improve efficiency in engineering design tasks.
+These figures describe the reported comparison and should not be interpreted as guaranteed performance across other runs or optimization problems.
 
 ---
 
@@ -192,39 +194,18 @@ This further reduces redundant evaluations.
 
 # Repository Structure
 
-```
-mlga-motor-optimization/
-│
-├── README.md
-│
-├── data/
-│ └── mlga_db_v1.csv
-│
-├── notebooks/
-│ ├── 01_surrogate_training.ipynb
-│ └── 02_mlga_experiment.ipynb
-│
-├── core/
-│ ├── ga_core.py
-│ ├── db_search.py
-│ ├── ml_gate.py
-│ └── evaluator.pt
-│
-└── results/
-└── figures/
-```
+The following paths are present in the public repository.
 
-### data
-Dataset used to train the surrogate model.
+| Path | Contents |
+|------|----------|
+| `README.md` | Project overview, methodology, and reported results. |
+| `core/` | Python source files: `ga_core.py`, `db_search.py`, `ml_gate.py`, and `evaluator.py`. |
+| `notebooks/` | `mlga_experiment.ipynb` and a `.gitkeep` placeholder. |
+| `results/figures/` | A `.gitkeep` placeholder; no figure files are currently included. |
+| `LICENSE` | MIT License. |
+| `.gitignore` | Git ignore rules. |
 
-### notebooks
-Experiment notebooks for training the surrogate model and running MLGA experiments.
-
-### core
-Core algorithm implementations.
-
-### results
-Generated plots and experiment outputs.
+The current public tree does not include a `data/` directory, `mlga_db_v1.csv`, `01_surrogate_training.ipynb`, `02_mlga_experiment.ipynb`, or `evaluator.pt`. Dataset availability, surrogate-training steps, and pretrained model availability are not established by this file listing.
 
 ---
 
