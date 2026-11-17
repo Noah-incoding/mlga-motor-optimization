@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
-"""Physics evaluator: equivalent-circuit performance calculation for induction motor designs."""
-"""
+"""Physics evaluator: equivalent-circuit performance calculation for induction motor designs.
+
 Motor performance evaluator used in the optimization loop.
 
 This module computes equivalent-circuit-based motor performance metrics
@@ -159,19 +159,19 @@ class MachineConfig:
 # =========================================================
 
 def calc_equiv_params_clean(v: dict):
-        """
-        Compute fixed parameters up to I11 and return the equivalent circuit
-        along with loss and magnetization parameters.
-        
-        A fixed output schema is guaranteed:
-          ok: bool
-              Indicates whether the calculation is valid.
-        
-          reason: str
-              Reason for failure if the calculation is invalid.
-        
-        All other fields will be returned as np.nan if the computation fails.
-        """
+    """
+    Compute fixed parameters up to I11 and return the equivalent circuit
+    along with loss and magnetization parameters.
+    
+    A fixed output schema is guaranteed:
+      ok: bool
+          Indicates whether the calculation is valid.
+    
+      reason: str
+          Reason for failure if the calculation is invalid.
+    
+    All other fields will be returned as np.nan if the computation fails.
+    """
 
     out = {
         "ok": False,

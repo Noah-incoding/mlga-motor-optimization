@@ -52,7 +52,7 @@ Each individual's fitness comes from one of three sources:
 
 # Key Results
 
-Main experiment: population 500, 400 generations.
+EP.4 main experiment: population 500, 400 generations. These historical results are separate from the run whose outputs are currently saved in the notebook.
 
 | Method | Runtime (sec) | Physics Evaluations | Best Fitness |
 |--------|--------------:|--------------------:|-------------:|
@@ -157,13 +157,17 @@ MLGA's global best was first found through physics evaluation and later re-encou
 
 ## Mean Population Fitness
 
-Mean population fitness is **not directly comparable** between the two methods. In Pure GA, every individual is evaluated by physics. In MLGA, most individuals carry surrogate-predicted fitness, so the population mean partly reflects model predictions. Best fitness, which always comes from physics-verified results, is the more meaningful comparison.
+Mean population fitness is **not directly comparable** between the two methods. In Pure GA, every individual is evaluated by physics. In MLGA, most individuals carry surrogate-predicted fitness, so the population mean partly reflects model predictions.
+
+The best design used for comparison must be evaluated by the original equivalent-circuit calculation model to obtain its **true fitness** (`true_score`); a surrogate prediction alone is not a verified optimization result. Exploit/explore candidates are sent to that model, and their true scores replace their predictions before selection. A later exact DB hit reuses the previously calculated true score.
+
+In the notebook's saved run, the MLGA global-best record has `fitness_source = physics`, `true_score = -3.0940494673005645`, and an earlier surrogate prediction of about -3.201880. Its final-generation record has `fitness_source = db` and the same true score. Both saved best designs were independently re-evaluated with the repaired evaluator and reproduced their recorded true scores. This verifies these reported solutions; the current GA loop itself selects its best from mixed `final_fitness` values and does not enforce physics verification for every possible run. Any future result whose best record still has `fitness_source = ml` needs explicit evaluation before publication.
 
 ## Database Reuse
 
 About 10–25 DB hits per generation, roughly 6,000 in total. The exact count varies with the random seed and the database state. DB reuse is not the main source of savings, but it reliably eliminates redundant evaluations.
 
-## Scaling Experiment: Larger Population
+## Historical Scaling Experiment: Larger Population
 
 To approximate a high-cost setting, the population was increased to 3,000 while the per-generation physics budget was not increased proportionally.
 
@@ -174,7 +178,24 @@ To approximate a high-cost setting, the population was increased to 3,000 while 
 
 The speedup grew to about **6.2×**, but MLGA's best fitness was clearly worse in this setting. With a much larger share of individuals ranked by surrogate predictions, prediction errors distort the selection ranking and weaken selection pressure. In other words, MLGA's quality depends on the ratio between the physics budget and the population size, not on the surrogate alone.
 
-The notebook in this repository is currently configured for this scaling experiment (population 3,000, 100 generations, 150 exploit + 150 explore).
+These historical scaling figures are not the outputs currently saved in the notebook.
+
+## Current Saved Notebook Run
+
+The notebook is configured for population 3,000, 100 generations, a fixed seed of 42, and 150 exploit + 150 explore physics candidates per generation. Its saved comparison table reports:
+
+| Method | Runtime (sec) | Physics Evaluations (100-generation history) | Best True Fitness |
+|--------|--------------:|--------------------------------------------:|------------------:|
+| Pure GA | 3445.739044 | 300,000 | -3.128290021160913 |
+| MLGA | 716.846705 | 30,000 | -3.0940494673005645 |
+
+- **4.8068× speedup** and **90% fewer physics evaluations** in the recorded generation history.
+- MLGA's best true fitness is worse by 0.034241 (about 1.09% relative to the magnitude of the Pure GA score). This is a difference in the composite score, not a 1.09% change in motor efficiency.
+- The saved MLGA history records 2,827 DB hits.
+
+This run supports a computation-efficiency advantage with a modest loss in best-solution quality, rather than better performance on both measures. It is a single saved run, not a new full experiment executed as part of the documentation update.
+
+**Counting convention:** the notebook sums physics calls from the 100-generation history. The current `run_ga_fast` implementation also evaluates the final population after that loop; its extra calls are excluded from those history totals. Runtime covers the full run. The notebook imports `run_ga`, whereas the published core currently exposes `run_ga_fast`, so the saved outputs should be treated as historical evidence rather than proof that the present checkout runs end to end unchanged.
 
 ---
 
